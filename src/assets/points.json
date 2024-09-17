@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "name": "Road Side Unit - P6",
+    "coordinates": [-8.65282, 40.64161],
+    "availableTechnology": ["camera", "wireless"]
+  },
+  {
+    "id": 2,
+    "name": "Road Side Unit - P7",
+    "coordinates": [-8.65259, 40.64139],
+    "availableTechnology": ["radar", "lidar"]
+  },
+  {
+    "id": 3,
+    "name": "Road Side Unit - P1",
+    "coordinates": [-8.66038, 40.63476],
+    "availableTechnology": ["camera", "wireless", "radar"]
+  }
+]
