@@ -12,7 +12,7 @@ export const addPoints = (
   onMarkerClick: (pointData: PointData) => void
 ) => {
   pointsArray.forEach((point) => {
-    const { coordinates, name, availableTechnology } = point;
+    const { coordinates, name } = point;
     if (coordinates && !isNaN(coordinates[0]) && !isNaN(coordinates[1])) {
       const marker = new maplibre.Marker().setLngLat(coordinates).addTo(map);
       marker.getElement().addEventListener("click", () => onMarkerClick(point));

@@ -24,10 +24,6 @@ const Toolbar: React.FC<ToolbarProps> = ({
 }) => {
   const [drawerOpen, setDrawerOpen] = useState(false);
 
-  const toggleDrawer = () => {
-    setDrawerOpen(!drawerOpen);
-  };
-
   return (
     <div className="absolute bottom-4 right-4 z-50 flex flex-col space-y-4 p-2 bg-gray-800 text-white rounded-md shadow-md">
       <button
