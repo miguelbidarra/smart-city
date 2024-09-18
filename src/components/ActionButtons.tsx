@@ -9,7 +9,10 @@ interface ActionButtonsProps {
   onKeyAction: () => void;
 }
 
-const ActionButtons: React.FC<ActionButtonsProps> = ({ onToggleColorScheme, onKeyAction }) => {
+const ActionButtons: React.FC<ActionButtonsProps> = ({
+  onToggleColorScheme,
+  onKeyAction,
+}) => {
   return (
     <div className="absolute top-4 right-4 z-50 flex space-x-4 p-2 bg-gray-800 text-white rounded-md shadow-md">
       <button

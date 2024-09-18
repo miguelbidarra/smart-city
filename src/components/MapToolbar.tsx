@@ -22,7 +22,7 @@ const Toolbar: React.FC<ToolbarProps> = ({
   onResetView,
   onToggleMapStyle,
 }) => {
-  const [drawerOpen, setDrawerOpen] = useState(false);
+  const [drawerOpen /*, setDrawerOpen*/] = useState(false);
 
   return (
     <div className="absolute bottom-4 right-4 z-50 flex flex-col space-y-4 p-2 bg-gray-800 text-white rounded-md shadow-md">
@@ -35,13 +35,22 @@ const Toolbar: React.FC<ToolbarProps> = ({
       </button>
       {drawerOpen && (
         <div className="absolute top-0 right-12 z-50 flex flex-col space-y-4 p-2 bg-gray-800 text-white rounded-md shadow-md">
-          <button className="flex items-center justify-center w-10 h-10 bg-gray-700 rounded-full hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500" aria-label="2D Map">
+          <button
+            className="flex items-center justify-center w-10 h-10 bg-gray-700 rounded-full hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500"
+            aria-label="2D Map"
+          >
             <MapOutlinedIcon />
           </button>
-          <button className="flex items-center justify-center w-10 h-10 bg-gray-700 rounded-full hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500" aria-label="3D Map">
+          <button
+            className="flex items-center justify-center w-10 h-10 bg-gray-700 rounded-full hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500"
+            aria-label="3D Map"
+          >
             <ThreeDRotationIcon />
           </button>
-          <button className="flex items-center justify-center w-10 h-10 bg-gray-700 rounded-full hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500" aria-label="Satellite View">
+          <button
+            className="flex items-center justify-center w-10 h-10 bg-gray-700 rounded-full hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500"
+            aria-label="Satellite View"
+          >
             <SatelliteIcon />
           </button>
         </div>

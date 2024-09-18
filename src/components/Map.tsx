@@ -1,4 +1,3 @@
-// Map.tsx
 "use client";
 
 import { useEffect, useRef, useState } from "react";
@@ -8,15 +7,28 @@ import Toolbar from "./MapToolbar";
 import ActionButtons from "./ActionButtons";
 import { addPoints } from "../utils/AddMarker"; // Import the addPoints function
 import Sidebar from "./Sidebar"; // Import the Sidebar component
-import pointsData from './../assets/points.json'; // Import the JSON file
+
+// Define a type for your JSON data
+interface PointData {
+  id: number;
+  name: string;
+  coordinates: [number, number]; // Tuple with exactly two numbers
+  availableTechnology: string[];
+}
+
+// Import the JSON data
+import pointsDataJson from "./../assets/points.json";
+
+// Type the imported JSON data
+const pointsData: PointData[] = pointsDataJson as PointData[];
 
 const MapComponent = () => {
-  const mapContainerRef = useRef(null);
+  const mapContainerRef = useRef<HTMLDivElement | null>(null);
   const mapRef = useRef<maplibre.Map | null>(null);
   const [mapStyle, setMapStyle] = useState(
     "https://api.maptiler.com/maps/hybrid/style.json?key=wqdc5gEXJnvGfabAg3E3"
   );
-  const [selectedPoint, setSelectedPoint] = useState<{ name: string; availableTechnology: string[] } | null>(null);
+  const [selectedPoint, setSelectedPoint] = useState<PointData | null>(null);
 
   useEffect(() => {
     if (mapContainerRef.current) {
@@ -32,7 +44,7 @@ const MapComponent = () => {
 
       return () => mapRef.current?.remove();
     }
-  }, []);
+  }, [mapStyle, pointsData]); // Added mapStyle and pointsData to dependencies
 
   useEffect(() => {
     if (mapRef.current) {
@@ -89,8 +101,16 @@ const MapComponent = () => {
   return (
     <div style={{ width: "100vw", height: "100vh", position: "relative" }}>
       <div ref={mapContainerRef} style={{ width: "100%", height: "100%" }} />
-      <Toolbar onZoomIn={handleZoomIn} onZoomOut={handleZoomOut} onResetView={handleResetView} onToggleMapStyle={toggleMapStyle} />
-      <ActionButtons onToggleColorScheme={handleToggleColorScheme} onKeyAction={handleKeyAction} />
+      <Toolbar
+        onZoomIn={handleZoomIn}
+        onZoomOut={handleZoomOut}
+        onResetView={handleResetView}
+        onToggleMapStyle={toggleMapStyle}
+      />
+      <ActionButtons
+        onToggleColorScheme={handleToggleColorScheme}
+        onKeyAction={handleKeyAction}
+      />
       <Sidebar data={selectedPoint} onClose={() => setSelectedPoint(null)} />
     </div>
   );

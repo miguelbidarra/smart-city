@@ -1,16 +1,16 @@
 import React from "react";
 
-interface SidebarProps {
-  data: {
-    name: string;
-    availableTechnology: string[];
-    coordinates: [number, number];
-  } | null;
-  onClose: () => void;
+interface PointData {
+  id: number;
+  name: string;
+  coordinates: [number, number]; // Tuple with exactly two numbers
+  availableTechnology: string[];
 }
 
-
-
+interface SidebarProps {
+  data: PointData | null; // Match the PointData interface
+  onClose: () => void;
+}
 
 const Sidebar: React.FC<SidebarProps> = ({ data, onClose }) => {
   if (!data) return null;

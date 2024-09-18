@@ -1,10 +1,12 @@
 import maplibre from "maplibre-gl";
 
 interface PointData {
-  coordinates: [number, number];
+  id: number;
   name: string;
+  coordinates: [number, number]; // Tuple with exactly two numbers
   availableTechnology: string[];
 }
+
 
 export const addPoints = (
   map: maplibre.Map,
